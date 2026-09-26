@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LegalEase - AI Legal Assistant</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f6f9;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #1a252f;
+            color: #ffffff;
+            padding: 1.5rem 2rem;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            color: #bdc3c7;
+            font-size: 1rem;
+        }
+
+        main {
+            flex: 1;
+            max-width: 800px;
+            width: 100%;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1rem;
+            resize: vertical;
+            margin-bottom: 1rem;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        button {
+            background-color: #2980b9;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #3498db;
+        }
+
+        .output-section {
+            display: none;
+        }
+
+        .output-section h2 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            color: #2c3e50;
+        }
+
+        .output-content {
+            background-color: #f8f9fa;
+            border-left: 4px solid #2980b9;
+            padding: 1rem;
+            border-radius: 4px;
+            white-space: pre-wrap;
+            line-height: 1.6;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #e9ecef;
+            color: #6c757d;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>LegalEase</h1>
+        <p>AI-Powered Legal Document Simplifier & Assistant</p>
+    </header>
+
+    <main>
+        <div class="card">
+            <label for="legalInput">Paste Legal Text or Document Context:</label>
+            <textarea id="legalInput" placeholder="Enter complex legal terms, contracts, or clauses here..."></textarea>
+            <button id="analyzeBtn">Analyze with Gemini</button>
+        </div>
+
+        <div class="card output-section" id="outputSection">
+            <h2>Simplified Summary & Insights</h2>
+            <div class="output-content" id="outputContent">
+                <!-- Response from Gemini API will be rendered here -->
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2026 LegalEase. Powered by Gemini AI.
+    </footer>
+
+    <script>
+        document.getElementById('analyzeBtn').addEventListener('click', async () => {
+            const input = document.getElementById('legalInput').value.trim();
+            const outputSection = document.getElementById('outputSection');
+            const outputContent = document.getElementById('outputContent');
+
+            if (!input) {
+                alert('Please enter some text to analyze.');
+                return;
+            }
+
+            outputSection.style.display = 'block';
+            outputContent.textContent = 'Analyzing legal document... Please wait.';
+
+            try {
+                // Connect this fetch request to your backend or Gemini API endpoint
+                /*
+                const response = await fetch('/api/analyze', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ text: input })
+                });
+                const data = await response.json();
+                outputContent.textContent = data.result;
+                */
+                
+                // Temporary mock delay for demo purposes
+                setTimeout(() => {
+                    outputContent.textContent = 'Analysis complete. Key takeaways:\n\n1. This agreement sets standard terms for service delivery.\n2. Termination requires 30 days notice.\n3. Liability is capped to the total fees paid.';
+                }, 1500);
+
+            } catch (error) {
+                outputContent.textContent = 'An error occurred while processing the request. Please try again.';
+            }
+        });
+    </script>
+</body>
+</html>
